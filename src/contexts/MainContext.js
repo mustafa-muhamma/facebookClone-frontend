@@ -4,9 +4,9 @@ import { createContext } from "react";
 const MainContext = createContext();
 
 export function MainProvider({ children }) {
-    const [userData, setUserData] = useState('');
-    const [sign, setSign] = useState();
-    const [token,setToken] = useState();
+    const [userData] = useState('');
+    const [sign] = useState();
+    const [token] = useState();
 
 
 
