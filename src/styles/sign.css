@@ -22,7 +22,7 @@
 }
 
 .text h1 {
-    color: blue;
+    color: yellow;
     margin: 10px 0;
     font-weight: 600;
     font-size: 60px;
@@ -61,28 +61,29 @@
     margin: 20px 0;
 }
 
-.sign {
-    width: 30%;
-    height: 50%;
+.input-container {
+    width: 350px;
+    height: 300px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 5px 10px #888888;
-    position: relative;
+    /* position: relative; */
     /* transition: 0.5s ease-out; */
 }
 
 .sign-in {
     width: 90%;
     height: 100%;
-    margin: 0 auto;
+    margin: 25px auto;
+    display: inline-block;
     border-bottom: 1px solid #EEF2E6;
 }
 
 .sign-in input {
     width: 90%;
     display: block;
-    margin: 0 20px;
-    margin-top: 20px;
+    margin:  20px;
+    /* margin-top: 20px; */
     padding: 0 15px;
     height: 50px;
     font-size: 1.2em;
@@ -97,14 +98,14 @@
 
 .errorMsg {
     font-weight: 300;
-    margin: 0 20px;
+    margin: 0 15px;
     color: red;
 }
 
 .sign-in button {
     width: 90%;
     height: 40px;
-    margin: 20px 20px;
+    margin: 20px;
     color: #fff;
     border: none;
     border-radius: 10px;
@@ -119,24 +120,25 @@
 .sign-in button:hover {
     background-color: #0404f0b6;
 }
-
-.sign .signUp-form {
+ .sign-up {
     position: absolute;
-    left: -500px;
+    left: 500px;
     top: 10%;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    background-color: #ccccdfb6;
-    box-shadow: 5px 10px #888888;
+    width: 600px;
+    height: 500px;
+    /* background: transparent; */
+    background-color: #fff;
+    box-shadow: 105px 350px 105px 600px #888888;
+    transition: 1.5s ease-in-out;
 
 }
+
 
 .closeBtn {
     display: block;
     width: 50px;
     height: 30px;
-    margin: 10px 0;
+    margin: 10px 15px;
     border: none;
     border-radius: 15px;
     background-color: #000;
@@ -153,7 +155,7 @@
 .sign-up input {
     width: 90%;
     display: block;
-    margin-top: 10px;
+    margin:10px 15px;
     padding: 0 15px;
     height: 50px;
     font-size: 1.2em;
@@ -168,7 +170,7 @@
 .sign-up .newAcc {
     width: 90%;
     height: 40px;
-    margin-top: 10px;
+    margin: 10px 15px;
     color: #fff;
     border: none;
     border-radius: 10px;

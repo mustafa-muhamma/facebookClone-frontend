@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
-const SignIn = () => {
+const SignIn = ({handleSign , isSigned}) => {
 
     const formik = useFormik({
         initialValues: {
@@ -11,7 +12,7 @@ const SignIn = () => {
 
         validationSchema: Yup.object({
             email: Yup.string()
-                .email('invalid Email Adress')
+                .min(10,'invalid Email Adress Or Phone Number') 
                 .required('Required!!'),
             password: Yup.string()
                 .required('Required!!')
@@ -20,7 +21,19 @@ const SignIn = () => {
         }),
 
         onSubmit: () => {
-            console.log(formik.values)
+            axios.post('http://localhost:5000/auth/signin', {
+                email: formik.values.email,
+                password: formik.values.password,
+            })
+                .then((res) => {
+                    handleSign(res.data);
+                    isSigned(false)
+                    console.log(res.data);
+
+                }).catch((e) => {
+                    console.log('server axios', e.response.data.message);
+                    console.log(e);
+                })
         }
     })
     return (
@@ -29,8 +42,8 @@ const SignIn = () => {
                 <input
                     name="email"
                     id="email"
-                    type="email"
-                    placeholder="Email Adress"
+                    type="text"
+                    placeholder="Email Adress Or Phone Number"
                     value={formik.values.email}
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}

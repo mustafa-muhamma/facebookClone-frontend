@@ -1,6 +1,10 @@
+import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-const SignUp = ({ closeSignUp }) => {
+
+
+
+const SignUp = ({ closeSignUp, handleSign, isSigned }) => {
 
     const formik = useFormik({
         initialValues: {
@@ -8,7 +12,7 @@ const SignUp = ({ closeSignUp }) => {
             lastName: "",
             email: "",
             password: "",
-            birthDay: ""
+            phoneNumber: ""
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -24,13 +28,30 @@ const SignUp = ({ closeSignUp }) => {
                 .required('Required!!')
                 .min(8, 'Password is too short - should be 8 chars minimum.')
                 .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
-            birthDay: Yup.string()
+            phoneNumber: Yup.string()
                 .required('required')
         }),
         onSubmit: () => {
-            closeSignUp(false)
+
+            axios.post('http://localhost:5000/auth/signup', {
+                firstName: formik.values.firstName,
+                lastName: formik.values.lastName,
+                email: formik.values.email,
+                password: formik.values.password,
+                phoneNumber: formik.values.phoneNumber
+            })
+                .then((res) => {
+                    handleSign(res.data);
+                    console.log(res);
+                    closeSignUp(false);
+                    isSigned(false)
+                })
+                .catch((e) => {
+                    console.log('server axios', e.response.data.message);
+                    console.log(e);
+                })
         }
-    })
+    });
     return (
 
         <form action="" className="sign-up" onSubmit={formik.handleSubmit}>
@@ -82,18 +103,17 @@ const SignUp = ({ closeSignUp }) => {
             {formik.errors.password && formik.touched.password ? <p className="errorMsg">{formik.errors.password}</p> : null}
 
             <input
-                name="birthDay"
-                id="date"
-                type="date"
-                max='2001/12/31'
-                min='1995/12/31'
-                value={formik.values.date}
+                name="phoneNumber"
+                id="num"
+                type="number"
+                value={formik.values.phoneNumber}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
             />
-            {formik.errors.birthDay && formik.touched.birthDay ? <p className="errorMsg">{formik.errors.birthDay}</p> : null}
+            {formik.errors.phoneNumber && formik.touched.phoneNumber ? <p className="errorMsg">{formik.errors.phoneNumber}</p> : null}
 
             <button className="newAcc" type="submit">Create New Account </button>
+
         </form>
     );
 }
