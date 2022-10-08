@@ -22,7 +22,7 @@
 }
 
 .text h1 {
-    color: yellow;
+    color: blue;
     margin: 10px 0;
     font-weight: 600;
     font-size: 60px;
@@ -123,6 +123,7 @@
  .sign-up {
     position: absolute;
     left: 500px;
+    /* margin: 50px auto; */
     top: 10%;
     width: 600px;
     height: 500px;
@@ -183,4 +184,41 @@
 }
 .sign-up .newAcc:hover{
     background-color: #5CB8E4;
+}
+@media (max-width : 1060px){
+ .sign-up{
+    left: 150px;
+    /* margin:50px auto ; */
+    top: 10%;
+    width: 600px;
+ }   
+}
+@media (min-width: 375px) and (max-width :660px){
+    .sign-up{
+        left: 30px;
+        /* right: 20px; */
+        top:10%;
+        width: 300px;
+    }
+    .container{
+        flex-direction: column;
+    }
+    .text .txt{
+        display: none;
+    }
+    
+}
+@media (max-width:375px){
+    .sign-up{
+        left: 30px;
+        /* right: 20px; */
+        top:10%;
+        width: 300px;
+    }
+    .container{
+        flex-direction: column;
+    }
+    .text .txt{
+        display: none;
+    }
 }

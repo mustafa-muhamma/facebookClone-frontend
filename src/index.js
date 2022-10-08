@@ -1,7 +1,11 @@
+import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { MainProvider } from './contexts/MainContext';
+
+// axios.defaults.baseURL = process.env.MAIN_BASE_URL;
+axios.defaults.baseURL = 'http://localhost:5000/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,11 +1,16 @@
 import axios from "axios";
 import { useFormik } from "formik";
+import { useContext } from "react";
 import * as Yup from "yup";
+import MainContext from "../../contexts/MainContext";
+import { signUp } from "../endPoints/EndPoints";
 
 
 
-const SignUp = ({ closeSignUp, handleSign, isSigned }) => {
-
+const SignUp = ({ closeSignUp, handleSign }) => {
+ 
+    const {err,handleErr,setErr} = useContext(MainContext);
+     
     const formik = useFormik({
         initialValues: {
             firstName: "",
@@ -33,7 +38,7 @@ const SignUp = ({ closeSignUp, handleSign, isSigned }) => {
         }),
         onSubmit: () => {
 
-            axios.post('http://localhost:5000/auth/signup', {
+            axios.post(signUp, {
                 firstName: formik.values.firstName,
                 lastName: formik.values.lastName,
                 email: formik.values.email,
@@ -42,13 +47,11 @@ const SignUp = ({ closeSignUp, handleSign, isSigned }) => {
             })
                 .then((res) => {
                     handleSign(res.data);
-                    console.log(res);
                     closeSignUp(false);
-                    isSigned(false)
+                    setErr('');
                 })
                 .catch((e) => {
-                    console.log('server axios', e.response.data.message);
-                    console.log(e);
+                    handleErr(e);
                 })
         }
     });
@@ -56,6 +59,7 @@ const SignUp = ({ closeSignUp, handleSign, isSigned }) => {
 
         <form action="" className="sign-up" onSubmit={formik.handleSubmit}>
             <button type="button" className="closeBtn" onClick={() => closeSignUp(false)}>X</button>
+            {err ? <p className="errorMsg">{err}</p> : null}
             <input
                 className="name"
                 name="firstName"
@@ -106,6 +110,7 @@ const SignUp = ({ closeSignUp, handleSign, isSigned }) => {
                 name="phoneNumber"
                 id="num"
                 type="number"
+                placeholder="Phone Number"
                 value={formik.values.phoneNumber}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}

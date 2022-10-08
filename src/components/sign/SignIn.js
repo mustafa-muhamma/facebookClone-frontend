@@ -1,8 +1,12 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import { useContext } from "react";
+import MainContext from "../../contexts/MainContext";
+import { logIn  } from "../endPoints/EndPoints";
 
-const SignIn = ({handleSign , isSigned}) => {
+const SignIn = ({ handleSign }) => {
+    const { err, handleErr,setErr } = useContext(MainContext)
 
     const formik = useFormik({
         initialValues: {
@@ -12,7 +16,7 @@ const SignIn = ({handleSign , isSigned}) => {
 
         validationSchema: Yup.object({
             email: Yup.string()
-                .min(10,'invalid Email Adress Or Phone Number') 
+                .min(10, 'invalid Email Adress Or Phone Number')
                 .required('Required!!'),
             password: Yup.string()
                 .required('Required!!')
@@ -21,20 +25,19 @@ const SignIn = ({handleSign , isSigned}) => {
         }),
 
         onSubmit: () => {
-            axios.post('http://localhost:5000/auth/signin', {
+            axios.post(logIn, {
                 email: formik.values.email,
                 password: formik.values.password,
             })
                 .then((res) => {
                     handleSign(res.data);
-                    isSigned(false)
-                    console.log(res.data);
-
-                }).catch((e) => {
-                    console.log('server axios', e.response.data.message);
-                    console.log(e);
+                    setErr('')
+                })
+                .catch((e) => {
+                    handleErr(e);
                 })
         }
+
     })
     return (
         <div className="input-container">
@@ -60,7 +63,7 @@ const SignIn = ({handleSign , isSigned}) => {
                 />
                 {formik.touched.password && formik.errors.password ? <p className="errorMsg">{formik.errors.password}</p> : null}
 
-
+                {err ? <p className="errorMsg">{err}</p> : null}
                 <button type="submit">Sign In</button>
             </form >
         </div >
