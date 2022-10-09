@@ -3,14 +3,19 @@ import { useFormik } from "formik";
 import { useContext } from "react";
 import * as Yup from "yup";
 import MainContext from "../../contexts/MainContext";
-import { signUp } from "../endPoints/EndPoints";
+import Error from "../../Error";
+import { signUp } from "../API/APIs";
 
 
 
 const SignUp = ({ closeSignUp, handleSign }) => {
- 
-    const {err,handleErr,setErr} = useContext(MainContext);
-     
+
+    const { err, handleErr, setErr } = useContext(MainContext);
+
+    const closeForm =()=>{
+        closeSignUp(false);
+        setErr('')
+    }
     const formik = useFormik({
         initialValues: {
             firstName: "",
@@ -38,6 +43,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
         }),
         onSubmit: () => {
 
+            setErr('');
             axios.post(signUp, {
                 firstName: formik.values.firstName,
                 lastName: formik.values.lastName,
@@ -58,8 +64,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
     return (
 
         <form action="" className="sign-up" onSubmit={formik.handleSubmit}>
-            <button type="button" className="closeBtn" onClick={() => closeSignUp(false)}>X</button>
-            {err ? <p className="errorMsg">{err}</p> : null}
+            <button type="button" className="closeBtn" onClick={closeForm}>X</button>
             <input
                 className="name"
                 name="firstName"
@@ -117,6 +122,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
             />
             {formik.errors.phoneNumber && formik.touched.phoneNumber ? <p className="errorMsg">{formik.errors.phoneNumber}</p> : null}
 
+            {err ? <Error /> : null}
             <button className="newAcc" type="submit">Create New Account </button>
 
         </form>

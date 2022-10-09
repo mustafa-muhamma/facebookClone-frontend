@@ -48,6 +48,8 @@
     transition: 0.5s ease-in;
 }
 
+
+
 .text .newBtn:hover {
     background-color: #15a013;
     transform: scale(1.1);
@@ -82,7 +84,7 @@
 .sign-in input {
     width: 90%;
     display: block;
-    margin:  20px;
+    margin: 20px;
     /* margin-top: 20px; */
     padding: 0 15px;
     height: 50px;
@@ -120,16 +122,16 @@
 .sign-in button:hover {
     background-color: #0404f0b6;
 }
- .sign-up {
+
+.sign-up {
     position: absolute;
     left: 500px;
-    /* margin: 50px auto; */
     top: 10%;
+    border-radius: 10px;
     width: 600px;
     height: 500px;
-    /* background: transparent; */
     background-color: #fff;
-    box-shadow: 105px 350px 105px 600px #888888;
+    box-shadow: 12px 10px 150px 350px rgba(0, 0, 0, .6);
     transition: 1.5s ease-in-out;
 
 }
@@ -156,7 +158,7 @@
 .sign-up input {
     width: 90%;
     display: block;
-    margin:10px 15px;
+    margin: 10px 15px;
     padding: 0 15px;
     height: 50px;
     font-size: 1.2em;
@@ -164,7 +166,8 @@
     border: 1px solid #EEF2E6;
     outline: none;
 }
-.sign-up input:focus{
+
+.sign-up input:focus {
     border: 1px solid #5CB8E4;
 }
 
@@ -182,43 +185,57 @@
     font-size: 20px;
     font-weight: 600;
 }
-.sign-up .newAcc:hover{
+
+.sign-up .newAcc:hover {
     background-color: #5CB8E4;
 }
-@media (max-width : 1060px){
- .sign-up{
-    left: 150px;
-    /* margin:50px auto ; */
-    top: 10%;
-    width: 600px;
- }   
+
+:disabled{
+    pointer-events: none !important;
 }
-@media (min-width: 375px) and (max-width :660px){
-    .sign-up{
+
+@media (max-width : 1060px) {
+    .sign-up {
+        left: 150px;
+        top: 10%;
+        width: 600px;
+    }
+}
+
+@media (min-width: 375px) and (max-width :660px) {
+    .sign-up {
         left: 30px;
         /* right: 20px; */
-        top:10%;
+        top: 10%;
         width: 300px;
     }
-    .container{
+    .text h1{
+        text-align: center;
+    }
+
+    .container {
         flex-direction: column;
     }
-    .text .txt{
+
+    .text .txt {
         display: none;
     }
-    
+
 }
-@media (max-width:375px){
-    .sign-up{
+
+@media (max-width:375px) {
+    .sign-up {
         left: 30px;
         /* right: 20px; */
-        top:10%;
+        top: 10%;
         width: 300px;
     }
-    .container{
+
+    .container {
         flex-direction: column;
     }
-    .text .txt{
+
+    .text .txt {
         display: none;
     }
 }

@@ -3,9 +3,10 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../contexts/MainContext";
-import { logIn  } from "../endPoints/EndPoints";
+import { logIn  } from "../API/APIs";
+import Error from "../../Error";
 
-const SignIn = ({ handleSign }) => {
+const SignIn = ({ handleSign,signView }) => {
     const { err, handleErr,setErr } = useContext(MainContext)
 
     const formik = useFormik({
@@ -25,6 +26,7 @@ const SignIn = ({ handleSign }) => {
         }),
 
         onSubmit: () => {
+            setErr('');
             axios.post(logIn, {
                 email: formik.values.email,
                 password: formik.values.password,
@@ -50,6 +52,7 @@ const SignIn = ({ handleSign }) => {
                     value={formik.values.email}
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
+                    disabled={signView ?true : false}
                 />
                 {formik.touched.email && formik.errors.email ? <p className="errorMsg">{formik.errors.email}</p> : null}
                 <input
@@ -60,11 +63,13 @@ const SignIn = ({ handleSign }) => {
                     value={formik.values.password}
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
+                    disabled={signView ?true : false}
                 />
                 {formik.touched.password && formik.errors.password ? <p className="errorMsg">{formik.errors.password}</p> : null}
 
-                {err ? <p className="errorMsg">{err}</p> : null}
-                <button type="submit">Sign In</button>
+                {err && !signView ? <Error /> : null}
+                   
+                <button type="submit" disabled={signView ?true : false}>Sign In</button>
             </form >
         </div >
 

@@ -7,9 +7,12 @@ import SignUp from "./SignUp";
 const SignIndex = () => {
     const [signView, setSignview] = useState(false);
 
-    const handleView = () => setSignview(true);
+    const handleView = () => {
+        setSignview(true)
+        setErr('')
+    }
 
-    const { handleSign  } = useContext(MainContext);
+    const { handleSign, setErr } = useContext(MainContext);
 
     return (
         <div className="container">
@@ -18,13 +21,13 @@ const SignIndex = () => {
                 <h1>Facebook</h1>
                 <p className='txt'>Facebook helps you connect and share with the people in your life.</p>
                 <div className="crteU">
-                    <p className='newUsr'>don't have an account ? Sign up</p>
-                    <button className='newBtn' onClick={() => handleView(true)} >Sign Up</button>
+                    <p className='newUsr'>don't have an account ?</p>
+                    <button className='newBtn'  disabled={signView ?true : false} onClick={() => handleView(true)} >Sign Up</button>
                 </div>
             </div>
             <div className="sign">
-                <SignIn handleSign={handleSign}  />
-                {signView ? <SignUp closeSignUp={setSignview}  handleSign={handleSign} /> : null}
+                <SignIn handleSign={handleSign} signView={signView}  />
+                {signView ? <SignUp closeSignUp={setSignview} /> : null}
 
             </div>
         </div>

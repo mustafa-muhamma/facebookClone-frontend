@@ -3,9 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { MainProvider } from './contexts/MainContext';
+import {BASE_URL} from './components/API/APIs'
 
-// axios.defaults.baseURL = process.env.MAIN_BASE_URL;
-axios.defaults.baseURL = 'http://localhost:5000/';
+axios.defaults.baseURL = BASE_URL;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
