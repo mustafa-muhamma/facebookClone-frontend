@@ -12,7 +12,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
 
     const { err, handleErr, setErr } = useContext(MainContext);
 
-    const closeForm =()=>{
+    const closeForm = () => {
         closeSignUp(false);
         setErr(null)
     }
@@ -39,7 +39,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 .min(8, 'Password is too short - should be 8 chars minimum.')
                 .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
             phoneNumber: Yup.string()
-            .required('Required!!')
+                .required('Required!!')
         }),
         onSubmit: () => {
 
@@ -62,7 +62,6 @@ const SignUp = ({ closeSignUp, handleSign }) => {
         <form action="" className="sign-up" onSubmit={formik.handleSubmit}>
             <button type="button" className="closeBtn" onClick={closeForm}>X</button>
             <input
-                className="name"
                 name="firstName"
                 id="first-name"
                 type="text"
@@ -74,7 +73,6 @@ const SignUp = ({ closeSignUp, handleSign }) => {
             {formik.errors.firstName && formik.touched.firstName ? <p className="errorMsg">{formik.errors.firstName}</p> : null}
 
             <input
-                className="name"
                 name="lastName"
                 id="last-name"
                 type="text"
@@ -86,6 +84,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
             {formik.errors.lastName && formik.touched.lastName ? <p className="errorMsg">{formik.errors.lastName}</p> : null}
 
             <input
+                className={err ? "onError" : null}
                 name="email"
                 id="email"
                 type="email"
@@ -93,6 +92,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                onClick={() => setErr(null)}
             />
             {formik.errors.email && formik.touched.email ? <p className="errorMsg">{formik.errors.email}</p> : null}
 
@@ -108,6 +108,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
             {formik.errors.password && formik.touched.password ? <p className="errorMsg">{formik.errors.password}</p> : null}
 
             <input
+                className={err ? "onError" : null}
                 name="phoneNumber"
                 id="num"
                 type="number"
@@ -115,6 +116,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 value={formik.values.phoneNumber}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                onClick={() => setErr(null)}
             />
             {formik.errors.phoneNumber && formik.touched.phoneNumber ? <p className="errorMsg">{formik.errors.phoneNumber}</p> : null}
 

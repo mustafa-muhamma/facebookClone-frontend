@@ -22,7 +22,7 @@ const SignIndex = () => {
                 <h1>Facebook</h1>
                 <p className='txt'>Facebook helps you connect and share with the people in your life.</p>
                 <div className="crteU">
-                    <p className='newUsr'>don't have an account ? {!signView ? <Link to={'/'} onClick={() => handleView(true)}>SignUp</Link>:null}</p>
+                    <p className='newUsr'>don't have an account ? {!signView ? <Link className="link" to={'/'} onClick={() => handleView(true)}>SignUp</Link>:<span className="span">SignUp</span>}</p>
                     <button className='newBtn'  disabled={signView ?true : false} onClick={() => handleView(true)} >Sign Up</button>
                 </div>
             </div>

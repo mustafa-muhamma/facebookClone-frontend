@@ -3,11 +3,11 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../contexts/MainContext";
-import { logIn  } from "../API/APIs";
+import { logIn } from "../API/APIs";
 import Error from "../../Error";
 
-const SignIn = ({ handleSign,signView }) => {
-    const { err, handleErr,setErr } = useContext(MainContext)
+const SignIn = ({ handleSign, signView }) => {
+    const { err, handleErr, setErr } = useContext(MainContext)
 
     const formik = useFormik({
         initialValues: {
@@ -40,6 +40,7 @@ const SignIn = ({ handleSign,signView }) => {
         <div className="input-container">
             <form action="" onSubmit={formik.handleSubmit} className="sign-in">
                 <input
+                    className={err && !signView ? "onError":null}
                     name="email"
                     id="email"
                     type="text"
@@ -47,9 +48,11 @@ const SignIn = ({ handleSign,signView }) => {
                     value={formik.values.email}
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    disabled={signView ?true : false}
+                    onClick={() => setErr(null)}
+                    disabled={signView ? true : false}
                 />
                 <input
+                    className={err && !signView ?"onError":null}
                     name="password"
                     id="password"
                     type="password"
@@ -57,12 +60,13 @@ const SignIn = ({ handleSign,signView }) => {
                     value={formik.values.password}
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
-                    disabled={signView ?true : false}
+                    onClick={() => setErr(null)}
+                    disabled={signView ? true : false}
                 />
 
                 {err && !signView ? <Error /> : null}
-                   
-                <button type="submit" disabled={signView ?true : false}>Sign In</button>
+
+                <button type="submit" disabled={signView ? true : false}>Sign In</button>
             </form >
         </div >
 
