@@ -47,7 +47,6 @@ const SignUp = ({ closeSignUp, handleSign }) => {
             const body = formik.values
             axios.post(signUp, body)
                 .then((res) => {
-                    console.log(body)
                     handleSign(res.data);
                     closeSignUp(false);
                     setErr(null);
