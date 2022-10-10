@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../contexts/MainContext";
@@ -15,25 +15,20 @@ const SignIn = ({ handleSign,signView }) => {
             password: ""
         },
 
-        validationSchema: Yup.object({
-            email: Yup.string()
-                .min(10, 'invalid Email Adress Or Phone Number')
-                .required('Required!!'),
-            password: Yup.string()
-                .required('Required!!')
-                .min(8, 'Password is too short - should be 8 chars minimum.')
-                .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
-        }),
+        // validationSchema: Yup.object({
+        //     email: Yup.string()
+        //         .required('Required!!'),
+        //     password: Yup.string()
+        //         .required('Required!!')
+        // }),
 
         onSubmit: () => {
-            setErr('');
-            axios.post(logIn, {
-                email: formik.values.email,
-                password: formik.values.password,
-            })
+            setErr(null);
+            const body = formik.values;
+            axios.post(logIn, body)
                 .then((res) => {
                     handleSign(res.data);
-                    setErr('')
+                    setErr(null);
                 })
                 .catch((e) => {
                     handleErr(e);
@@ -54,7 +49,6 @@ const SignIn = ({ handleSign,signView }) => {
                     onChange={formik.handleChange}
                     disabled={signView ?true : false}
                 />
-                {formik.touched.email && formik.errors.email ? <p className="errorMsg">{formik.errors.email}</p> : null}
                 <input
                     name="password"
                     id="password"
@@ -65,7 +59,6 @@ const SignIn = ({ handleSign,signView }) => {
                     onChange={formik.handleChange}
                     disabled={signView ?true : false}
                 />
-                {formik.touched.password && formik.errors.password ? <p className="errorMsg">{formik.errors.password}</p> : null}
 
                 {err && !signView ? <Error /> : null}
                    

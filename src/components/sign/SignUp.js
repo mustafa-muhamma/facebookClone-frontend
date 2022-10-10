@@ -14,7 +14,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
 
     const closeForm =()=>{
         closeSignUp(false);
-        setErr('')
+        setErr(null)
     }
     const formik = useFormik({
         initialValues: {
@@ -27,10 +27,10 @@ const SignUp = ({ closeSignUp, handleSign }) => {
         validationSchema: Yup.object({
             firstName: Yup.string()
                 .max(8, 'must be 8 chrachter or less')
-                .required('Required..'),
+                .required('Required!!'),
             lastName: Yup.string()
                 .max(8, 'must be 8 chrachter or less')
-                .required('Required..'),
+                .required('Required!!'),
             email: Yup.string()
                 .email('invalid Email Adress')
                 .required('Required!!'),
@@ -39,22 +39,18 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 .min(8, 'Password is too short - should be 8 chars minimum.')
                 .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
             phoneNumber: Yup.string()
-                .required('required')
+            .required('Required!!')
         }),
         onSubmit: () => {
 
-            setErr('');
-            axios.post(signUp, {
-                firstName: formik.values.firstName,
-                lastName: formik.values.lastName,
-                email: formik.values.email,
-                password: formik.values.password,
-                phoneNumber: formik.values.phoneNumber
-            })
+            setErr(null);
+            const body = formik.values
+            axios.post(signUp, body)
                 .then((res) => {
+                    console.log(body)
                     handleSign(res.data);
                     closeSignUp(false);
-                    setErr('');
+                    setErr(null);
                 })
                 .catch((e) => {
                     handleErr(e);

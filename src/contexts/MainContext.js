@@ -7,7 +7,7 @@ export function MainProvider({ children }) {
     const [userData, setUserData] = useState(Cookies.get('userInf') || null);
     const [isSigned, setIsSigned] = useState(!!Cookies.get("userToken"));
     const [token, setToken] = useState(Cookies.get('userToken') || null);
-    const [err, setErr] = useState('');
+    const [err, setErr] = useState(null);
 
     const handleSign = (data) => {
         setIsSigned(true);
