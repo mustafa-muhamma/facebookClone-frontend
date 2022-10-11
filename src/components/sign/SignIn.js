@@ -1,12 +1,11 @@
 import { useFormik } from "formik";
-// import * as Yup from "yup";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../contexts/MainContext";
 import { logIn } from "../API/APIs";
 import Error from "../../Error";
 
-const SignIn = ({ handleSign, signView }) => {
+const SignIn = ({ handleSign, signUpView }) => {
     const { err, handleErr, setErr } = useContext(MainContext)
 
     const formik = useFormik({
@@ -15,20 +14,12 @@ const SignIn = ({ handleSign, signView }) => {
             password: ""
         },
 
-        // validationSchema: Yup.object({
-        //     email: Yup.string()
-        //         .required('Required!!'),
-        //     password: Yup.string()
-        //         .required('Required!!')
-        // }),
-
         onSubmit: () => {
             setErr(null);
             const body = formik.values;
             axios.post(logIn, body)
                 .then((res) => {
                     handleSign(res.data);
-                    setErr(null);
                 })
                 .catch((e) => {
                     handleErr(e);
@@ -40,7 +31,7 @@ const SignIn = ({ handleSign, signView }) => {
         <div className="input-container">
             <form action="" onSubmit={formik.handleSubmit} className="sign-in">
                 <input
-                    className={err && !signView ? "onError":null}
+                    className={err && !signUpView ? "onError":null}
                     name="email"
                     id="email"
                     type="text"
@@ -49,10 +40,10 @@ const SignIn = ({ handleSign, signView }) => {
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     onClick={() => setErr(null)}
-                    disabled={signView ? true : false}
+                    disabled={signUpView ? true : false}
                 />
                 <input
-                    className={err && !signView ?"onError":null}
+                    className={err && !signUpView ?"onError":null}
                     name="password"
                     id="password"
                     type="password"
@@ -61,12 +52,12 @@ const SignIn = ({ handleSign, signView }) => {
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     onClick={() => setErr(null)}
-                    disabled={signView ? true : false}
+                    disabled={signUpView ? true : false}
                 />
 
-                {err && !signView ? <Error /> : null}
+                {err && !signUpView ? <Error /> : null}
 
-                <button type="submit" disabled={signView ? true : false}>Sign In</button>
+                <button type="submit" disabled={signUpView ? true : false}>Sign In</button>
             </form >
         </div >
 

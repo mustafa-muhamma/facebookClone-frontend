@@ -49,7 +49,6 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 .then((res) => {
                     handleSign(res.data);
                     closeSignUp(false);
-                    setErr(null);
                 })
                 .catch((e) => {
                     handleErr(e);
