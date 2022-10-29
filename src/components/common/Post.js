@@ -10,11 +10,9 @@ const Post = ({ user, setPostView, postView }) => {
     const post = { body, img, id };
     const ref = React.useRef();
 
-
     function handleValue() {
         ref.current.value = '';
         setImg();
-
     };
 
     const handleSubmit = (e) => {
