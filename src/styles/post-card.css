@@ -1,0 +1,111 @@
+.post-card {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.post-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+    box-sizing: border-box;
+    margin: 10px 0;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.post-body {
+    width: 80%;
+    margin: 20px;
+}
+
+.post-body .cont {
+    display: block;
+    width: 80%;
+    word-wrap: break-word;
+}
+
+.post-body .imageSlider {
+    margin: 10px ;
+    display: inline;
+}
+
+.user-inf {
+    margin: 20px;
+    display: flex;
+}
+
+.names {
+    align-self: flex-start;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.names:hover {
+    text-decoration: underline;
+}
+
+.user-inf .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+.user-inf .avatar:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.fullName {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    display: inline-block;
+}
+
+.userName {
+    font-weight: 300;
+    color: #536471;
+}
+
+.lengths{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.viewBtn {
+    margin:0 20px;
+    text-decoration: none;
+    color: #536471;
+}
+
+.viewBtn:hover {
+    text-decoration: underline;
+}
+
+.btn-group {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    border-top: 1px solid #D8D9CF;
+}
+
+.like,
+.comment {
+    width: 450px;
+    background-color: #fff;
+    font-weight: 800;
+    height: 50px;
+    border: none;
+}
+
+.like:hover,
+.comment:hover {
+    background-color: #D8D9CF;
+    border-radius: 10px;
+    cursor: pointer;
+}

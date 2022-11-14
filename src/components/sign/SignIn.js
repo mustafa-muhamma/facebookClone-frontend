@@ -2,8 +2,13 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../contexts/MainContext";
+<<<<<<< Updated upstream
 import { logIn } from "../API/APIs";
 import Error from "../../Error";
+=======
+import { logIn } from "../../APIs/APIs";
+import Error from "../common/Error";
+>>>>>>> Stashed changes
 
 const SignIn = ({ handleSign, signUpView }) => {
     const { err, handleErr, setErr } = useContext(MainContext)

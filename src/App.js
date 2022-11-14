@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
 import Profile from './components/profile/Profile';
+import Navbar from './components/navbar/Navbar';
 
 function App() {
   const { isSigned } = useContext(MainContext)

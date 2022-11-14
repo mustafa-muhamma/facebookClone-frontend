@@ -1,0 +1,150 @@
+.nav {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  top: 0;
+}
+
+.nav h1 a {
+  color: #6D9886;
+  transition: 0.5s;
+}
+
+.nav a {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px;
+  transition: 0.5s;
+}
+
+.nav a:hover {
+  color: #EB6440;
+}
+
+.nav img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+
+.searchInp {
+  width: 600px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  background-color: #F0F2F5;
+  border-top-left-radius: 10px;
+  font-size: 1.5em;
+  transition: 0.5s;
+}
+
+.searchInp::placeholder {
+  text-align: center;
+}
+
+.searchInp:focus {
+  border: 1px solid #98A8F8;
+  border-right: none;
+}
+
+.searchInp:focus+.clearResult {
+  border: 1px solid #98A8F8;
+}
+
+.clearResult {
+  z-index: -1;
+  background-color: #F0F2F5;
+  border: none;
+  font-weight: 300;
+  color: #536471;
+  width: 25px;
+  height: 40px;
+  margin-bottom: 10px;
+  position: absolute;
+  display: inline-block;
+  border-top-right-radius: 10px;
+}
+
+.clearResult:hover {
+  background-color: #536471;
+  cursor: pointer;
+  color: #5F9DF7;
+}
+
+.dropdown-result {
+  margin-left: 170px;
+}
+
+
+.dropdown-search {
+  position: absolute;
+  background: #fff;
+  width: 625px;
+  max-height: 500px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow-y: auto;
+  z-index: 1;
+}
+.dropdown-search::-webkit-scrollbar{
+  width: 5px;
+}
+.dropdown-search::-webkit-scrollbar-track{
+  background-color: rgb(165, 162, 162);
+}
+.dropdown-search::-webkit-scrollbar-thumb{
+  background-color: rgb(87, 86, 86);
+}
+.user-card {
+  border-radius: 10px;
+  display: flex;
+  padding: 12px 16px;
+  transform: none;
+}
+
+.user-card:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  margin: auto 10px;
+}
+.user-card .info {
+  align-self: flex-start;
+}
+.info span {
+  color: #0f1419;
+  font-weight: 700;
+  font-size: 1.2em;
+  text-transform: capitalize;
+}
+
+.info p {
+  font-weight: 300;
+  color: #536471;
+  font-size: 0.9em;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.userInf {
+  display: flex;
+  align-items: center;
+}
