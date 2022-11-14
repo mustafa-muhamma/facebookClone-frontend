@@ -10,7 +10,7 @@ const Search = () => {
     const [showResult, setShowResult] = useState(false);
 
     return (
-        <div className="dropdown">
+        <div className="dropdown-result">
             <input
                 onClick={() => setPostView(false)}
                 type="text"

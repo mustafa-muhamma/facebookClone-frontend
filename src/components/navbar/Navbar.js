@@ -13,12 +13,20 @@ const Navbar = () => {
         <div className="nav">
             <h1 onClick={() => setPostView(false)}><Link to={'/'}>Facebook</Link></h1>
             <Search />
-            <div className="dropdown">
+            <div className="userInf">
                 <img alt="" src={avatar} />
-                <div className="dropdown-content">
-                    <Link onClick={() => setPostView(false)} to={`/profile/${user._id}`}>My Profile ..</Link>
-                    <Link onClick={signOut} to={'/'}>Log Out</Link>
-                </div>
+                <Link
+                    className="option"
+                    onClick={() => setPostView(false)}
+                    to={`/profile/${user._id}`}
+                >
+                    {`${user.firstName} ${user.lastName}`}
+                </Link>
+
+            </div>
+
+            <div className="dropdown-conten">
+                <Link className="option" onClick={signOut} to={'/'}>Log Out</Link>
             </div>
         </div>
     );

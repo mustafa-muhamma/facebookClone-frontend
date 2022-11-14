@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import axios from "axios";
-import { search } from "../../../API/APIs";
+import { search } from "../../../APIs/APIs";
 import MainContext from "../../../contexts/MainContext";
 import { useState } from "react";
 import UsersCard from "./UsersCard";
@@ -26,9 +26,9 @@ const UserCard = ({ showResult, searchValue }) => {
     }, [searchValue, uToken]);
 
     return (
-        <div className="dropdown-search">
+        <div className={searchValue ? 'dropdown-search':null}>
             {searchValue && results.map((result) => (
-                <UsersCard result={result} showResult={showResult} />
+                <UsersCard key={result._id} result={result} showResult={showResult} />
             ))}
         </div>
     );
