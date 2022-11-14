@@ -3,8 +3,8 @@ import { useFormik } from "formik";
 import { useContext } from "react";
 import * as Yup from "yup";
 import MainContext from "../../contexts/MainContext";
-import Error from "../../Error";
-import { signUp } from "../API/APIs";
+import Error from "../common/Error";
+import { signUp } from "../../API/APIs";
 
 
 
@@ -22,7 +22,8 @@ const SignUp = ({ closeSignUp, handleSign }) => {
             lastName: "",
             email: "",
             password: "",
-            phoneNumber: ""
+            phoneNumber: "",
+            username: ""
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -39,6 +40,8 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 .min(8, 'Password is too short - should be 8 chars minimum.')
                 .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
             phoneNumber: Yup.string()
+                .required('Required!!'),
+            username: Yup.string()
                 .required('Required!!')
         }),
         onSubmit: () => {
@@ -49,6 +52,7 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 .then((res) => {
                     handleSign(res.data);
                     closeSignUp(false);
+                    console.log(formik.values);
                 })
                 .catch((e) => {
                     handleErr(e);
@@ -117,6 +121,19 @@ const SignUp = ({ closeSignUp, handleSign }) => {
                 onClick={() => setErr(null)}
             />
             {formik.errors.phoneNumber && formik.touched.phoneNumber ? <p className="errorMsg">{formik.errors.phoneNumber}</p> : null}
+
+            <input
+                className={err ? "onError" : null}
+                name="username"
+                id="user"
+                type="text"
+                placeholder="User_Name"
+                value={formik.values.username}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                onClick={() => setErr(null)}
+            />
+            {formik.errors.username && formik.touched.username ? <p className="errorMsg">{formik.errors.username}</p> : null}
 
             {err ? <Error /> : null}
             <button className="newAcc" type="submit">Create New Account </button>
