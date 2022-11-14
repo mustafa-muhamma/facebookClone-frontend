@@ -5,6 +5,7 @@
     width: 100%;
     font-family: 'Quicksand', sans-serif !important;
     transition: 0.5s all;
+<<<<<<< HEAD
     box-sizing: border-box;
     /* margin: 20px; */
 }
@@ -13,13 +14,34 @@
     height: 50px;
     margin: 0 auto ;
     border: 1px solid #ddd;
+=======
+    /* position: relative; */
+    box-sizing: border-box;
+    /* margin-top: 100px; */
+}
+.wall .postt{
+    width: 40%;
+    height: 50px;
+    margin: 25px 35%;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+>>>>>>> a19b8b758218d209f521bb42634e44da01075f42
     display: block;
     transition: 0.5s;
     font-size: 1.5em;
     border-radius: 10px;
+<<<<<<< HEAD
+=======
+    /* position:absolute; */
+    /* margin: 25px 0; */
+>>>>>>> a19b8b758218d209f521bb42634e44da01075f42
 }
 .wall .postt::placeholder{
     padding: auto;
     font-size: 1.5em;
     text-align: center;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a19b8b758218d209f521bb42634e44da01075f42

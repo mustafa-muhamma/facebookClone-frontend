@@ -1,5 +1,6 @@
 import SignIndex from './components/sign/SignIndex';
 import MainContext from './contexts/MainContext';
+import '../src/app.css';
 import { useContext } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/home/Home';
@@ -10,16 +11,17 @@ function App() {
   const { isSigned } = useContext(MainContext)
   return (
     <div className="App">
-      <div className="content">
-        <BrowserRouter>
-          {!isSigned ? <SignIndex /> :
+      <BrowserRouter>
+        {!isSigned ? <SignIndex /> :
+          <div className='routes'>
+            <Navbar />
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/profile' element={<Profile />} />
+              <Route path='/profile/:_id' element={<Profile />} />
             </Routes>
-          }
-        </BrowserRouter>
-      </div>
+          </div>
+        }
+      </BrowserRouter>
     </div>
   );
 }

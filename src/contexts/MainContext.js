@@ -8,6 +8,8 @@ export function MainProvider({ children }) {
     const [isSigned, setIsSigned] = useState(!!Cookies.get("userToken"));
     const [token, setToken] = useState(Cookies.get('userToken') || null);
     const [err, setErr] = useState(null);
+    const [postView, setPostView] = useState(false);
+
 
     const handleSign = (data) => {
         setIsSigned(true);
@@ -22,6 +24,7 @@ export function MainProvider({ children }) {
         setUserData('');
         Cookies.remove('userToken');
         setToken('');
+        setPostView(false)
     };
 
     const handleErr = (e) => {
@@ -29,7 +32,7 @@ export function MainProvider({ children }) {
     }
 
     return (
-        <MainContext.Provider value={{ isSigned, token, userData, handleSign, signOut,err,handleErr,setErr }}>
+        <MainContext.Provider value={{ isSigned, token, userData, handleSign, signOut, err, handleErr, setErr, postView, setPostView }}>
             {children}
         </MainContext.Provider>
     )

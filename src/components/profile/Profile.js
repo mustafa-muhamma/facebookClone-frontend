@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import Home from "../home/Home";
 
 const Profile = () => {
     return (
         <div>
             {/* <Home /> */}
+=======
+const Profile = () => {
+    return (
+        <div>
+            <h1>my profile</h1>
+>>>>>>> a19b8b758218d209f521bb42634e44da01075f42
             {/* <button type="button" className="btn btn-outline-primary">Primary</button>
             <button type="button" className="btn btn-outline-secondary">Secondary</button>
             <button type="button" className="btn btn-outline-success">Success</button>

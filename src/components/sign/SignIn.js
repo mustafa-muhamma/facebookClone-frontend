@@ -2,20 +2,15 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../contexts/MainContext";
-<<<<<<< Updated upstream
-import { logIn } from "../API/APIs";
-import Error from "../../Error";
-=======
-import { logIn } from "../../APIs/APIs";
+import { logIn } from "../../API/APIs";
 import Error from "../common/Error";
->>>>>>> Stashed changes
 
 const SignIn = ({ handleSign, signUpView }) => {
     const { err, handleErr, setErr } = useContext(MainContext)
 
     const formik = useFormik({
         initialValues: {
-            email: "",
+            username: "",
             password: ""
         },
 
@@ -25,6 +20,7 @@ const SignIn = ({ handleSign, signUpView }) => {
             axios.post(logIn, body)
                 .then((res) => {
                     handleSign(res.data);
+                    console.log(res.data);
                 })
                 .catch((e) => {
                     handleErr(e);
@@ -36,19 +32,19 @@ const SignIn = ({ handleSign, signUpView }) => {
         <div className="input-container">
             <form action="" onSubmit={formik.handleSubmit} className="sign-in">
                 <input
-                    className={err && !signUpView ? "onError":null}
-                    name="email"
-                    id="email"
+                    className={err && !signUpView ? "onError" : null}
+                    name="username"
+                    id="username"
                     type="text"
-                    placeholder="Email Adress Or Phone Number"
-                    value={formik.values.email}
+                    placeholder="User Name"
+                    value={formik.values.username}
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     onClick={() => setErr(null)}
                     disabled={signUpView ? true : false}
                 />
                 <input
-                    className={err && !signUpView ?"onError":null}
+                    className={err && !signUpView ? "onError" : null}
                     name="password"
                     id="password"
                     type="password"
