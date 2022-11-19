@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useContext } from "react";
 import MainContext from "../../contexts/MainContext";
-import { logIn } from "../../API/APIs";
+import { logIn } from "../../APIs/APIs";
 import Error from "../common/Error";
 
 const SignIn = ({ handleSign, signUpView }) => {

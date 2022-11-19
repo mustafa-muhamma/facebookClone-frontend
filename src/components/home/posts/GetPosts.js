@@ -40,7 +40,7 @@ const GetPosts = ({ header }) => {
         let options = {
             root: null,
             rootMargin: "0px",
-            threshold: 1.0,
+            threshold: .8,
         };
 
         const observer = new IntersectionObserver(handleObserver, options);

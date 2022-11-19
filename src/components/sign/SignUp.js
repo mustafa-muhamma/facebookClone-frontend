@@ -3,18 +3,8 @@ import { useFormik } from "formik";
 import { useContext } from "react";
 import * as Yup from "yup";
 import MainContext from "../../contexts/MainContext";
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-import Error from "../../Error";
-import { signUp } from "../API/APIs";
-=======
 import Error from "../common/Error";
 import { signUp } from "../../APIs/APIs";
->>>>>>> Stashed changes
-=======
-import Error from "../common/Error";
-import { signUp } from "../../API/APIs";
->>>>>>> a19b8b758218d209f521bb42634e44da01075f42
 
 
 
