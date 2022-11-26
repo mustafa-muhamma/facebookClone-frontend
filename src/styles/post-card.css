@@ -22,11 +22,12 @@
 .post-body .cont {
     display: block;
     width: 80%;
+    margin-bottom: 5px;
     word-wrap: break-word;
 }
 
 .post-body .imageSlider {
-    margin: 10px ;
+    margin: 10px;
     display: inline;
 }
 
@@ -69,48 +70,118 @@
     color: #536471;
 }
 
-.lengths{
+.lengths {
     display: flex;
     justify-content: space-between;
+    /* position: relative; */
 
 }
 
 .viewBtn {
-    margin:0 20px;
+    margin: 0 20px;
     text-decoration: none;
     color: #536471;
 }
 
 .viewBtn:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
+.list {
+    width: 500px;
+    min-height: 500px;
+    box-shadow: 12px 10px 150px 650px rgba(0, 0, 0, .6);
+    position: absolute;
+    top: 20%;
+    left: 500px;
+    background-color: #fff;
+    z-index: 99;
+}
+
+.list .user {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: 0.5s;
+    text-decoration: none;
+}
+.list .user:hover{
+    background-color: #F0F2F5;
+}
+
+.user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 15px;
+}
+
+.user .user-data {
+    margin-left: 5px;
+}
+.user-data span{
+    font-weight: 600;
+    font-size: 1.3em;
+}
+.user-data p{
+    font-weight: 300;
+    font-size: 0.8em;
+    color: #536471;
+}
 .btn-group {
     width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 3px;
     border-top: 1px solid #D8D9CF;
+    border-bottom: 1px solid #D8D9CF;
+
 }
 
 .like,
+.unLike,
 .comment {
-    width: 450px;
+    width: 400px;
     background-color: #fff;
+    color: #536471;
     font-weight: 800;
-    height: 50px;
+    font-size: 1.1em;
+    height: 40px;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.unLike {
+    color: #0d83ff;
+}
+
+.like svg,
+.unLike svg,
+.comment svg {
+    margin-right: 10px;
 }
 
 .like:hover,
-.comment:hover {
+.comment:hover,
+.unLike:hover {
     background-color: #D8D9CF;
     border-radius: 10px;
     cursor: pointer;
 }
-@media (max-width:930px){
-    .post-card{
+
+@media (max-width:930px) {
+    .post-card {
         width: 90%;
     }
+ .list{
+    top: 10%;
+    left: 5%;
+ }   
 }

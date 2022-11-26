@@ -3,13 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { getPosts } from "../../../APIs/APIs";
 import '../../../styles/post-card.css'
-const GetPosts = ({ header }) => {
+import PostButtons from "./PostButtons";
+const GetPosts = ({ user }) => {
     const [posts, setPosts] = useState([]);
     const [isFetching, setIsFetching] = useState(false);
     const [page, setPage] = useState(1);
     const [prevY, setPrevY] = useState(0);
 
-    let pageRef = useRef();
+    let pageRef = useRef({});
     pageRef.current = page;
 
     let postsRef = useRef({});
@@ -21,11 +22,12 @@ const GetPosts = ({ header }) => {
     let fetchingRef = useRef(null);
 
     const post = () => {
-        axios.get(getPosts + pageRef.current, header)
+        axios.get(getPosts + pageRef.current)
             .then((res) => {
                 if (res) {
                     setPosts([...postsRef.current, ...res.data.posts])
                     setIsFetching(false);
+                    console.log(res.data.posts)
                 }
 
             }).catch((e) => {
@@ -72,20 +74,9 @@ const GetPosts = ({ header }) => {
                     </div>
                     <div className="post-body">
                         <h4 className="cont">{post.content}</h4>
-                        {post.images.length > 0 && post.images.map((imageSrc, index) => (
-                            <img key={index} className="imageSlider" src={post.userId.avatar} alt="" />
-                        ))}
+                        {post.images && <img src={`./uploads/${post.images}`} alt="" />  }
                     </div>
-                    <div className="lengths">
-                        <Link to={'/'} className="viewBtn">{post.likes.length}  likes</Link>
-                        <Link to={'/'} className="viewBtn" >{post.comments.length} Comments</Link>
-                    </div>
-
-                    <div className="btn-group">
-                        <button className="like">Like</button>
-                        <button className="comment">Comment</button>
-
-                    </div>
+                    <PostButtons user={user} post={post} />
                 </div>
             ))}
             <div

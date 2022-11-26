@@ -5,3 +5,4 @@ export const search = 'user/search?username=';
 export const getUser = 'user/';
 export const createPost = 'post/create';
 export const getPosts = 'post/?page=';
+export const react = 'post/'

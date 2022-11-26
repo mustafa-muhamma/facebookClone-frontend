@@ -1,50 +1,46 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { createPost } from "../../../APIs/APIs";
 import '../../../styles/post.css';
 
-const Post = ({ user, header }) => {
+const Post = ({ user }) => {
 
     const [content, setContent] = useState('');
-    const [images, setImages] = useState([]);
-    const [imagesUrl, setImagesUrl] = useState([]);
-    const post = { content, images };
-    const ref = React.useRef();
-
-
-    const handleSubmit = () => {
-        axios.post(createPost, post, header)
-            .then((res) => {
-                setContent('');
-                setImagesUrl([]);
-                setImages([])
-            }).catch((e) => console.log(e));
+    const [images, setImages] = useState('');
+    
+    const uploadImg = (e) => {
+        setImages(e.target.files[0]);
+        console.log(images)
     };
 
-    useEffect(() => {
-        if (images.length < 1) return;
-        const newImagesUrl = [];
-        images.forEach((image) => newImagesUrl.push(URL.createObjectURL(image)));
-        setImagesUrl(newImagesUrl);
-    }, [images]);
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    const uploadImg = (e) => {
-        setImages([...e.target.files]);
+        const formData = new FormData();
+        formData.append('content', content);
+        formData.append('images', images);
+        setContent('');
+        setImages('');
+
+        axios.post(createPost, formData)
+            .then((res) => {
+                console.log(res.data)
+            }).catch((e) => console.log(e));
     };
 
     return (
         <div className="createPost">
-            <form className="body">
+            <form className="body" onSubmit={handleSubmit} encType='multipart/form-data'>
                 <img src={user.avatar} className="avatar" alt="" />
                 <textarea
                     className="content"
                     placeholder={`Whats On Your Mind , ${user.firstName}`}
                     value={content}
-                    required={images.length>0 ?false:true}
+                    required={images.length > 0 ? false : true}
                     onChange={(e) => setContent(e.target.value)}
                 ></textarea>
-                <button onClick={handleSubmit}> Post</button>
+                <button> Post</button>
             </form>
             <div className="media">
                 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" className="bi bi-images" viewBox="0 0 16 16">
@@ -56,17 +52,14 @@ const Post = ({ user, header }) => {
                     <input
                         className="img"
                         type="file"
-                        multiple
+                        filename='images'
                         accept="image/*"
                         onChange={uploadImg}
-                        ref={ref}
                     />
                 </label>
             </div>
             <div className="album">
-                {images && imagesUrl.map((imageUrl, index) => (
-                    <img src={imageUrl} alt="not found" key={index} />
-                ))}
+                {images && <img src={images.name} alt="" />}
             </div>
 
         </div>

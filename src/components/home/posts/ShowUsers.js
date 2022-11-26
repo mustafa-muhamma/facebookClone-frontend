@@ -1,0 +1,19 @@
+import { Link } from "react-router-dom";
+
+const ShowUsers = ({ users, showLikes ,setShowLikes}) => {
+    return (
+        <div className="list">
+            <button className="closeBtn" onClick={()=>setShowLikes(false)}>X</button>
+            {showLikes && <Link to={`/profile/${users._id}`} className="user">
+                <img src={users.avatar} alt="" />
+                <div className="user-data">
+                    <span> {`${users.firstName} ${users.lastName}`}</span>
+                    <p>{'@' + users.username}</p>
+                </div>
+            </Link>
+            }
+        </div>
+    );
+}
+
+export default ShowUsers;
