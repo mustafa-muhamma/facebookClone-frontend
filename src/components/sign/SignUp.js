@@ -4,7 +4,7 @@ import { useContext } from "react";
 import * as Yup from "yup";
 import MainContext from "../../contexts/MainContext";
 import Error from "../common/Error";
-import { signUp } from "../../API/APIs";
+import { signUp } from "../../APIs/APIs";
 
 
 

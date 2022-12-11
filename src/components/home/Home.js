@@ -1,20 +1,18 @@
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import MainContext from "../../contexts/MainContext";
 import '../../styles/home.css';
-import Post from "../common/Post";
+import Post from "./posts/Post";
+import GetPosts from "./posts/GetPosts";
+
 const Home = () => {
-    const { userData,postView,setPostView } = useContext(MainContext);
+    const [posts, setPosts] = useState([]);
+    const { userData } = useContext(MainContext);
     const user = JSON.parse(userData);
 
-    const handleView = () => setPostView(true);
-
     return (
-        <div className="home">
-            <div className="wall">
-                {!postView ? <input className="postt" type="text" placeholder={`Whats On Your Mind , ${user.firstName}`} onClick={handleView} /> : null}
-                {postView ? <Post user={user} setPostView={setPostView} postView={postView}/> : null}
-                <div className="feeds"></div>
-            </div>
+        <div className="wall">
+            <Post user={user} setPosts={setPosts} />
+            <GetPosts  user={user} posts={posts} setPosts={setPosts}/>
         </div>
     );
 }
