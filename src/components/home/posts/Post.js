@@ -4,11 +4,11 @@ import { useState } from "react";
 import { createPost } from "../../../APIs/APIs";
 import '../../../styles/post.css';
 
-const Post = ({ user }) => {
+const Post = ({ user, setPosts }) => {
 
     const [content, setContent] = useState('');
     const [images, setImages] = useState('');
-    
+
     const uploadImg = (e) => {
         setImages(e.target.files[0]);
         console.log(images)
@@ -26,6 +26,7 @@ const Post = ({ user }) => {
         axios.post(createPost, formData)
             .then((res) => {
                 console.log(res.data)
+                setPosts(prev =>[res.data.newPost,...prev])
             }).catch((e) => console.log(e));
     };
 

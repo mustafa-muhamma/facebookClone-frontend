@@ -1,15 +1,16 @@
-.post-card {
+/* main post styling */
+.post-container {
     width: 50%;
     margin: 0 auto;
 }
 
-.post-container {
+.post-card {
     width: 100%;
     display: flex;
     flex-direction: column;
     border-bottom: none;
     box-sizing: border-box;
-    margin: 10px 0;
+    margin: 10px auto;
     border-radius: 15px;
     background-color: #fff;
 }
@@ -18,6 +19,8 @@
     width: 80%;
     margin: 20px;
 }
+
+/* post Content with the img */
 
 .post-body .cont {
     display: block;
@@ -29,6 +32,27 @@
 .post-body .imageSlider {
     margin: 10px;
     display: inline;
+}
+
+/* user data display */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editPost {
+    margin-right: 10px;
+}
+
+.editBtn {
+    margin-right: 10px;
+}
+
+.editPost button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .user-inf {
@@ -70,11 +94,11 @@
     color: #536471;
 }
 
+/* the two links before buttons */
+
 .lengths {
     display: flex;
     justify-content: space-between;
-    /* position: relative; */
-
 }
 
 .viewBtn {
@@ -88,27 +112,52 @@
     cursor: pointer;
 }
 
+/* styling for the  list of likes && comments */
+
 .list {
-    width: 500px;
-    min-height: 500px;
-    box-shadow: 12px 10px 150px 650px rgba(0, 0, 0, .6);
-    position: absolute;
-    top: 20%;
-    left: 500px;
-    background-color: #fff;
-    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
 }
 
-.list .user {
+.usersList {
+    width: 500px;
+    height: 600px;
+    background-color: #D8D9CF;
+    box-shadow: 12px 10px 150px 650px rgba(0, 0, 0, .6);
+    position: absolute;
+    top: 10%;
+    left: 500px;
+    overflow-y: auto;
+}
+
+.usersList::-webkit-scrollbar {
+    width: 5px;
+}
+
+.usersList::-webkit-scrollbar-track {
+    background-color: rgb(165, 162, 162);
+}
+
+.usersList::-webkit-scrollbar-thumb {
+    background-color: rgb(87, 86, 86);
+}
+
+.usersList .user {
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto;
     border-radius: 10px;
     transition: 0.5s;
     text-decoration: none;
 }
-.list .user:hover{
+
+.list .user:hover {
     background-color: #F0F2F5;
 }
 
@@ -122,15 +171,40 @@
 .user .user-data {
     margin-left: 5px;
 }
-.user-data span{
+
+.user-data span {
     font-weight: 600;
     font-size: 1.3em;
 }
-.user-data p{
+
+.user-data p {
     font-weight: 300;
     font-size: 0.8em;
     color: #536471;
 }
+
+.close {
+    position: fixed;
+    margin: 2px 10px;
+    margin-left: 460px;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-weight: 800;
+    border-radius: 50%;
+    background-color: #536471;
+    color: #fff;
+    z-index: 999;
+}
+
+.close:hover {
+    background-color: #D8D9CF;
+    color: #000;
+    cursor: pointer;
+}
+
+/* main buttons for post  */
+
 .btn-group {
     width: 90%;
     margin: 0 auto;
@@ -145,7 +219,9 @@
 
 .like,
 .unLike,
-.comment {
+.comment,
+.delete,
+.edit {
     width: 400px;
     background-color: #fff;
     color: #536471;
@@ -170,18 +246,137 @@
 
 .like:hover,
 .comment:hover,
-.unLike:hover {
+.unLike:hover,
+.delete:hover,
+.edit:hover {
     background-color: #D8D9CF;
     border-radius: 10px;
     cursor: pointer;
 }
 
-@media (max-width:930px) {
-    .post-card {
-        width: 90%;
+/* create comment && popUp style */
+
+.commentField {
+    width: 90%;
+    height: 35px;
+    margin: auto;
+    margin-bottom: 15px;
+    background-color: #F0F2F5;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+}
+
+.commentField input {
+    width: 97%;
+    height: 26px;
+    margin-left: 5px;
+    background-color: #F0F2F5;
+    color: #000;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 7px;
+}
+
+.commentField button {
+    margin-right: 5px;
+    background-color: #F0F2F5;
+    border: none;
+    cursor: pointer;
+
+}
+
+/* post Comments list */
+.comment-card {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #FEFCF3;
+
+}
+
+.comment-card:first-of-type {
+    margin-top: 35px;
+}
+
+.commentBtn {
+    margin: 0 15px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.commentBtn button {
+    width: 70px;
+    border: none;
+    background-color: transparent;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.commentBtn .like:hover {
+    color: #0d83ff;
+}
+
+.commentBtn .delete:hover {
+    color: #FB2576;
+}
+
+.commentBtn .edit:hover {
+    color: #8B7E74;
+}
+
+.showUsers {
+    margin-top: 30px;
+}
+
+/* resposnsive for the home page  */
+@media (max-width:1300px) {
+    .usersList {
+        top: 5%;
+        left: 25%;
     }
- .list{
-    top: 10%;
-    left: 5%;
- }   
+
+    /* .post-card .close {
+        top: 5.5%;
+        left: 790px;
+    } */
+}
+
+@media (min-width:850px) and (max-width:1030px) {
+    .usersList {
+        height: 90%;
+    }
+
+
+}
+
+@media (max-width:930px) {
+    .post-container {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media(min-width:662px) and (max-width:800px) {
+    .usersList {
+        left: 90px;
+    }
+}
+
+@media  (max-width:661px) {
+    .usersList{
+        width: 300px;
+    }
+    .close{
+        left: -70px;
+    }
+}
+@media (min-width:370px) and (max-width:500px){
+    .usersList{
+        left: 50px;
+    }
+    .close{
+        left: -145px;
+    }
 }

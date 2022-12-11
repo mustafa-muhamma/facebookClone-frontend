@@ -14,7 +14,7 @@ function App() {
   if (isSigned) {
     const uToken = JSON.parse(token)
     axios.defaults.headers.common['Authorization'] = uToken;
-  } 
+  }
 
 
   return (

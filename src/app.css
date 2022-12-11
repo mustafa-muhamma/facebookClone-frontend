@@ -15,8 +15,9 @@ body{
 .routes {
     margin-top: 90px;
 }
-@media (max-width:540px){
+@media (max-width:930px){
     .routes{
         margin-top: 135px;
     }
 }
+

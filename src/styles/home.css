@@ -6,4 +6,6 @@
     font-family: 'Quicksand', sans-serif !important;
     transition: 0.5s all;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
