@@ -4,7 +4,7 @@ import { useState } from "react";
 import { createPost } from "../../../APIs/APIs";
 import '../../../styles/post.css';
 
-const Post = ({ user, setPosts }) => {
+const Post = ({ user }) => {
 
     const [content, setContent] = useState('');
     const [images, setImages] = useState('');
@@ -25,13 +25,13 @@ const Post = ({ user, setPosts }) => {
 
         axios.post(createPost, formData)
             .then((res) => {
-                console.log(res.data)
-                setPosts(prev =>[res.data.newPost,...prev])
+                console.log(res.data);
+                // setPosts(prev => [res.data.newPost, ...prev]);
             }).catch((e) => console.log(e));
     };
 
     return (
-        <div className="createPost">
+        <>
             <form className="body" onSubmit={handleSubmit} encType='multipart/form-data'>
                 <img src={user.avatar} className="avatar" alt="" />
                 <textarea
@@ -63,7 +63,7 @@ const Post = ({ user, setPosts }) => {
                 {images && <img src={images.name} alt="" />}
             </div>
 
-        </div>
+        </>
     );
 }
 

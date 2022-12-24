@@ -1,5 +1,6 @@
 import { useState, createContext } from "react";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const MainContext = createContext();
 
@@ -27,7 +28,9 @@ export function MainProvider({ children }) {
 
     const handleErr = (e) => {
         setErr(e.response.data.message)
-    }
+    };
+   
+
 
     return (
         <MainContext.Provider value={{ isSigned, token, userData, handleSign, signOut, err, handleErr, setErr }}>

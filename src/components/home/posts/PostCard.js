@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { react } from "../../../APIs/APIs";
 import PostButtons from "./PostButtons";
+import '../../../styles/post-card.css'
 
-const PostContainer = ({ post, user }) => {
+
+const PostCard = ({ post, user }) => {
     const [current, setCurrent] = useState(false);
     
     useEffect(() => {
@@ -55,4 +57,4 @@ const PostContainer = ({ post, user }) => {
     );
 }
 
-export default PostContainer;
+export default PostCard;
