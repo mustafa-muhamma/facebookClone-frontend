@@ -8,16 +8,34 @@
     color: #033;
     transition: 0.5s all;
 }
-body{
+
+body {
     background-color: #F0F2F5;
 }
 
 .routes {
     margin-top: 90px;
 }
-@media (max-width:930px){
-    .routes{
+
+.createPost {
+    width: 50%;
+    padding: 6px;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 1px solid none;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+.makePost {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+@media (max-width:930px) {
+    .routes {
         margin-top: 135px;
     }
 }
-

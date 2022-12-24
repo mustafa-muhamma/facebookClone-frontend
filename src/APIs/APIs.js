@@ -6,3 +6,4 @@ export const getUser = 'user/';
 export const createPost = 'post/create';
 export const getPosts = 'post/?page=';
 export const react = 'post/'
+export const userPosts = 'post/user_posts/'

@@ -1,13 +1,3 @@
-.createPost {
-  width: 50%;
-  margin: 0 auto;
-  padding: 6px;
-  border-radius: 20px;
-  border: 1px solid none;
-  background-color: #fff;
-  overflow-y: auto;
-}
-
 .createPost::-webkit-scrollbar {
   width: 5px;
 }
